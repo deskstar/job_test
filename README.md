@@ -13,10 +13,6 @@ For job application technical task
 4. Install [MySQL] (https://dev.mysql.com/downloads/workbench/) if you dont have a MySQL server installed
 5. Go to the project folder root (e.g. you save this project at C:/job_test, then switch to this folder) and run the below command through command line to install all nodejs packages 
 ```
-MySQL install
-If you have an error "Client does not support authentication protocol requested by server", please execute the following query in MySQL
-ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Password'
-
 npm install
 ```
 6. Connect to your MySQL server and run the "db_setup.sql" located at project root, reference to execute [.SQL] (https://dev.mysql.com/doc/refman/8.0/en/mysql-batch-commands.html). Or, you can run it throught other softwares
@@ -38,3 +34,6 @@ Default url will be **localhost:3000**
 - route // folder for routing config
   - customer_route.js // handle customer related request route config
 
+# Troubleshooting
+If you have an error "Client does not support authentication protocol requested by server", please execute the following query in MySQL
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Password'
