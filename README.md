@@ -33,7 +33,14 @@ Default url will be **localhost:3000**
   - customer_repository.js // handle data manipulation on customer data
 - route // folder for routing config
   - customer_route.js // handle customer related request route config
-
+- view // folder for view
+  - customer
+    - index.ejs
+    - new.es
+  - partial
+    - footer.ejs
+    - header.ejs
+  
 # Troubleshooting
 If you have an error "Client does not support authentication protocol requested by server", please execute the following query in MySQL
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'Password'
