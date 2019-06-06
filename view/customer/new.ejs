@@ -1,0 +1,52 @@
+<%- include('../Partial/header.ejs'); -%>
+<div class="container">
+        <div class="row">
+                <p class="h3 mt-3 mb-3"><%= page.title %></p>
+            </div>
+            <div class="row">
+    <form action="/customer/new" method="post">
+        <div class="form-group">
+                <label class="">Name</label>
+            <input type="Text" class="form-control" name="name" 
+            value="<% if (page.customer && page.customer.name) { %><%= page.customer.name %><% } %>"/>
+        </div>
+        <div class="form-group">
+                <label class="">Phone</label>
+                <input type="Text" class="form-control" name="phone" 
+                value="<% if (page.customer && page.customer.phone) { %><%= page.customer.phone %><% } %>">
+            </div>
+            <div class="form-group">
+                    <label class="">Address</label>
+                    <input type="Text" class="form-control" name="address" 
+                    value="<% if (page.customer && page.customer.address) { %><%= page.customer.address %><% } %>">
+                </div>
+                <div class="form-group">
+                        <label class="">Status</label>
+                        <select  class="form-control" name="status">
+                            <option value="0" <% if (page.customer && page.customer.status == 0) { %><%= "selected" %><% } %>">Inactive</option>
+                            <option value="1" <% if (page.customer && page.customer.status == 1) { %><%= "selected" %><% } %>">Current</option>
+                            <option value="2" <% if (page.customer && page.customer.status == 2) { %><%= "selected" %><% } %>">Prospective</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="">Notes (1 note 1 line)</label>
+                        <% if (page.customer) { %>
+                        <div>
+                            <% if (page.customer.notesJson) { %>
+                                <% page.customer.notesJson.forEach(function(note) {%>
+                                    <div><%= note %></div>
+                                <% }) %>
+                            <% } %>
+                        </div>
+                        <% } else { %>
+                            <textarea class="form-control" rows="4" cols="50" name="notes"></textarea>
+                        <% } %>
+                    </div>
+                                <% if (page.customer) { %>
+                                    <input type="hidden" value=<%= page.customer.customer_id %> name="id"/>
+                                <% } %>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+</div>
+<%- include('../Partial/footer.ejs'); -%>

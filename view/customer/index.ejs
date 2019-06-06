@@ -1,0 +1,66 @@
+<%- include('../Partial/header.ejs'); -%>
+    <div class="container" style="overflow-wrap: break-word">
+            <div class="row">
+                    <p class="h3 mt-3 mb-3"><%= page.title %></p>
+                </div>
+        <table id="table" 
+        data-toggle="table"
+        data-filter-control="true"
+        data-toolbar="#toolbar">
+                <thead><tr>
+            <th data-field="id" data-sortable="true">
+                Id
+            </th>
+            <th  data-field="status" data-sortable="true" data-filter-control="input">
+                Status
+            </th>
+            <th  data-field="name" data-sortable="true" data-filter-control="input">
+                Name
+            </th>
+            <th  data-field="phone" data-sortable="true" data-filter-control="input">
+                Phone
+            </th>
+            <th  data-field="address" data-sortable="true" data-filter-control="input">
+                Address
+            </th>
+            <th>
+                Create Time
+            </th>
+            <th>
+                Action
+            </th>
+        </tr></thead>
+        <tbody>
+        <% page.customers.forEach(function(customer, index) { %>
+            <tr>
+                <td>
+                    <%= customer.customer_id %>
+                </td>
+                <td>
+                    <% if (customer.status == 0) {%><%= "Inactive" %><%}%>
+                    <% if (customer.status == 1) {%><%= "Current" %><%}%>
+                    <% if (customer.status == 2) {%><%= "Prospective" %><%}%>
+                </td>
+                <td>
+                    <%= customer.name %>
+                </td>
+                <td>
+                    <%= customer.phone %>
+                </td>
+                <td>
+                    <%= customer.address %>
+                </td>
+                <td>
+                    <%= customer.create_time %>
+                </td>
+                <td>
+                    <a class="btn btn-primary" href=<%= "/customer/" + customer.customer_id %> role="button">Edit</a>
+                </td>
+            </div>
+            <% }) %>
+        </tbody></table>
+            <div class="row">
+                <a class="btn btn-primary m-1" href="/customer/new" role="button">New Customer</a>
+            </div>
+</div>
+    <%- include('../Partial/footer'); -%>
